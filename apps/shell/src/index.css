@@ -36,11 +36,12 @@
   }
 
   body {
-    background-color: var(--color-background);
+    background-color: transparent;
     color: var(--color-foreground);
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
+    overflow: hidden;
   }
 }
 

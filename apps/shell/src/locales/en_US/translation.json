@@ -55,5 +55,10 @@
     "change_image": "Change Image",
     "change_name": "Change Name",
     "change_password": "Change Password"
+  },
+  "welcome": {
+    "title": "Welcome to Edenland",
+    "description": "Your new native foundation is ready. A system focused on performance, minimalist design, and total control.",
+    "button": "Start Journey"
   }
 }

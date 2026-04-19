@@ -1,40 +1,31 @@
 # ISO Builder Implementation
 
-Este documento descreve a implementação da infraestrutura para geração de imagens ISO do Edenland.
+O pacote `iso-builder` é responsável por gerar a imagem ISO oficial do Edenland baseada no Arch Linux.
 
-## Objetivo
-Automatizar a criação de uma imagem Live (baseada em Arch Linux) que contenha o shell do Edenland pré-configurado, com suporte a autologin e interface premium out-of-the-box.
+## Estrutura da ISO
 
-## Estrutura
-- **Localização**: `packages/iso-builder`
-- **Base**: Archiso (Arch Linux ISO building tool)
+- **Base:** Arch Linux (usando `mkarchiso`).
+- **Desktop Environment:** Hyprland (Wayland).
+- **Login Manager:** `greetd` com login automático para `archuser`.
+- **Shell:** Edenland Shell (incluído em `/usr/bin/edenland`).
 
-## Componentes
-1. **Shell Integration**: O binário gerado pelo `@edenland/edenland` (via Tauri) é incorporado à imagem.
-2. **Greetd Configuration**: Configurado para realizar autologin na sessão Live.
-3. **Hyprland Configuration**: Dotfiles pré-configurados para iniciar o shell e gerenciar as janelas de forma elegante.
-4. **Visual Identity**: Wallpapers e esquemas de cores pré-aplicados.
+## Configurações Relevantes
 
-## Configurações de Build
-Para builds de produção e geração de ISO, as seguintes configurações são críticas:
+### mkinitcpio
+O arquivo `airootfs/etc/mkinitcpio.conf` foi configurado para suportar o ambiente live:
+- **HOOKS:** `base udev memdisk archiso archiso_loop_mnt block filesystems keyboard`.
+- **Compressão:** `xz` para menor tamanho de imagem.
 
-### Tauri Bundle Identifier
-O identificador do bundle no `tauri.conf.json` deve ser único. 
-- **Valor atual**: `com.edenland.shell`
+### Pacotes Adicionais
+Além da base do Arch, incluímos:
+- `pv`: Para monitoramento de progresso durante o build.
+- `qemu-guest-agent` & `spice-vdagent`: Suporte aprimorado para máquinas virtuais.
+- `hyprland` & `xorg-xwayland`: Base gráfica.
+- `noto-fonts` & `noto-fonts-emoji`: Tipografia moderna.
 
-## Como gerar
-
-### Localmente
-Devido ao uso do Turborepo e buffering de saída, o `sudo` pode travar o terminal se executado da raiz. Recomenda-se:
-1. Validar o sudo: `sudo -v`
-2. Executar diretamente na pasta: 
-   ```bash
-   cd packages/iso-builder && bun run build:iso
-   ```
-
-### CI/CD
-Em ambientes de CI, o comando pode ser executado normalmente pela raiz ou via Turborepo, desde que o runner tenha permissões de `sudo` sem senha (passwordless) e suporte a loopback devices.
-
-## Changelog de Correções
-- **2026-04-19**: Corrigido o erro `com.tauri.dev is not allowed` que impedia o build de produção do shell dentro do fluxo da ISO.
-- **2026-04-19**: Ajustado o script de build para usar `sudo -E` e documentada a estratégia para evitar travamentos de TTY no Turborepo.
+## Procedimento de Build
+Para gerar a ISO, execute o script no root do projeto:
+```bash
+npm run build:iso
+```
+Isso utilizará o `mkarchiso` para processar o diretório atual e gerar a imagem em `out/`.

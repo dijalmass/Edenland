@@ -1,0 +1,7 @@
+root:x:0:
+wheel:x:10:root,archuser
+archuser:x:1000:
+video:x:986:archuser
+audio:x:995:archuser
+input:x:991:archuser
+render:x:989:archuser

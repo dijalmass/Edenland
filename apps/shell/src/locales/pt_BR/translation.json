@@ -55,5 +55,10 @@
     "change_image": "Alterar Imagem",
     "change_name": "Alterar Nome",
     "change_password": "Alterar Senha"
+  },
+  "welcome": {
+    "title": "Bem-vindo ao Edenland",
+    "description": "Sua nova fundação nativa está pronta. Um sistema focado em performance, design minimalista e controle total.",
+    "button": "Começar Jornada"
   }
 }

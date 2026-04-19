@@ -17,6 +17,11 @@ file_permissions=(
   ["/etc/greetd/config.toml"]="0:0:644"
   ["/etc/edenland/hyprland.conf"]="0:0:644"
   ["/etc/edenland/hyprpaper.conf"]="0:0:644"
+  ["/etc/passwd"]="0:0:644"
+  ["/etc/shadow"]="0:0:400"
+  ["/etc/group"]="0:0:644"
+  ["/etc/gshadow"]="0:0:400"
+  ["/etc/os-release"]="0:0:644"
   ["/usr/bin/edenland"]="0:0:755"
   ["/home/archuser/install.sh"]="1000:1000:755"
 )

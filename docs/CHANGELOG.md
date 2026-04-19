@@ -9,7 +9,9 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
 
 ### Core & Shell
-- **Command Palette / Application Launcher**: O verdadeiro coração "Command-First" do sistema (estilo Spotlight/KRunner) para executar apps, buscar arquivos e rodar scripts.
+- **Shell UX Refinement**: Transição do Shell de uma janela comum para uma interface de sistema nativa (sem header/decorações) e modo tela cheia.
+- **Hyprland Compatibility**: Atualização das regras de janela para a nova sintaxe unificada `windowrule` e desativação de processos redundantes de wallpaper.
+- **System Theme**: Refinamento da transparência e integração visual entre o compositor e o shell.
 - **System Tray**: Área designada no Dock para abrigar ícones e interações de aplicações em segundo plano.
 - **Central de Notificações**: Painel unificado para histórico de alertas, expandindo as notificações já existentes.
 
@@ -22,9 +24,16 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 ### Fixed
 - **ISO Builder**: Corrigido o nome do pacote `powerprofilesctl` para `power-profiles-daemon` na lista de pacotes.
 - **ISO Builder**: Corrigido erro 404 ao tentar sincronizar o repositório `community` (descontinuado e fundido ao `extra`) e otimizado `pacman.conf` com `ParallelDownloads` e feedback visual.
+- **ISO Builder**: Corrigido erro "Failed to start Switch Root" adicionando `mkinitcpio-archiso` e configurando os hooks corretos no `mkinitcpio.conf` da ISO.
+- **ISO Builder**: Corrigido erro `Hook 'archiso_shutdown' cannot be found` removendo o hook obsoleto do `mkinitcpio.conf`.
+- **ISO Builder**: Corrigida a sintaxe do `hyprland.conf` (shadow e window rules) para evitar erros de configuração no boot.
+- **ISO Builder**: Adicionado pacote `pv` para evitar avisos no log e fornecer feedback visual de progresso.
+- **ISO Builder**: Adicionado suporte a VMs com os pacotes `qemu-guest-agent` e `spice-vdagent`.
 
 - **Shell**: Correção do erro de build de produção (`com.tauri.dev` identifier) permitindo a geração da ISO.
 - **ISO Builder**: Corrigido travamento de TTY durante o build causado pelo prompt do `sudo` dentro do Turborepo; atualizados modos de boot depreciados, restauradas pastas de configuração (`grub`/`syslinux`), limpas permissões de arquivos inexistentes no `profiledef.sh` e atualizado o README com instruções de build Local vs CI/CD.
+- **ISO Builder**: Corrigido falha no carregamento da interface gráfica adicionando drivers (`mesa`), suporte a fontes (`noto-fonts`) e movendo o `greetd` para a VT7 para evitar conflitos.
+- **ISO Builder**: Corrigido erro de detecção automática de SO no QEMU/Virt-manager através da criação de um arquivo `os-release` customizado com ID Arch.
 
 
 ### Added

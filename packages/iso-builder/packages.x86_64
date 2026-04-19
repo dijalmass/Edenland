@@ -9,6 +9,9 @@ git
 # Wayland & Desktop
 wayland
 hyprland
+mesa
+xorg-xwayland
+polkit-gnome
 pipewire
 pipewire-pulse
 wireplumber
@@ -22,12 +25,19 @@ librsvg
 hyprpaper
 greetd
 greetd-tuigreet
+noto-fonts
+noto-fonts-emoji
+foot
+pv
+qemu-guest-agent
+spice-vdagent
 
 # Development / Build tools (opcional na ISO, mas útil para testes)
 bun
 rustup
 
 # ISO specific
+mkinitcpio-archiso
 arch-install-scripts
 syslinux
 grub

@@ -1,0 +1,11 @@
+NAME="Edenland"
+PRETTY_NAME="Edenland Live"
+ID=arch
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://github.com/dijalmass/Edenland"
+DOCUMENTATION_URL="https://github.com/dijalmass/Edenland"
+SUPPORT_URL="https://github.com/dijalmass/Edenland/issues"
+BUG_REPORT_URL="https://github.com/dijalmass/Edenland/issues"
+LOGO=archlinux-logo

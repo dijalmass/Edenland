@@ -1,19 +1,18 @@
-import { useTranslation } from 'react-i18next'
 import { NetworkManager } from './components/NetworkManager'
 import { BatteryManager } from './components/BatteryManager'
 import { DateTimeManager } from './components/DateTimeManager'
-import { UserManager } from './components/UserManager'
+import { WelcomeModal } from './components/WelcomeModal'
 import { Toaster } from 'sonner'
 import wallpaper from './assets/wallpapers/default.png'
+import { UserManager } from './components/UserManager'
 
 function App() {
-  const { t } = useTranslation();
-
   return (
     <div 
       className="relative min-h-screen w-full font-sans bg-cover bg-center bg-no-repeat transition-all duration-700"
       style={{ backgroundImage: `url(${wallpaper})` }}
     >
+      <WelcomeModal />
       {/* Overlay leve para garantir contraste se necessário */}
       <div className="absolute inset-0 bg-black/30 pointer-events-none" />
       {/* Vertical Side Dock (Right) */}
@@ -32,10 +31,9 @@ function App() {
         </div>
       </aside>
 
-      {/* Conteúdo Central do Desktop (Wallpapers, Widgets, etc) */}
-      <main className="pt-16 px-8 flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-4xl font-bold text-foreground/50 mb-4 select-none">{t('desktop.title')}</h1>
-        <p className="text-muted-foreground text-sm select-none">{t('desktop.subtitle')}</p>
+      {/* Conteúdo Central do Desktop (Limpo) */}
+      <main className="pt-16 px-8 flex flex-col items-center justify-center min-h-screen pointer-events-none">
+        {/* Espaço reservado para widgets futuros ou apenas desktop limpo */}
       </main>
       <Toaster richColors position="top-right" closeButton />
     </div>
