@@ -28,6 +28,12 @@ apps/**/src-tauri/binaries/
 # --- Turborepo ---
 .turbo/
 
+# --- ISO Builder ---
+packages/iso-builder/work/
+packages/iso-builder/out/
+packages/iso-builder/airootfs/usr/bin/edenland
+
+
 # --- IDEs / Editors ---
 .vscode/*
 !.vscode/extensions.json
