@@ -43,5 +43,17 @@
     "show_hours": "Mostrar Horas",
     "show_minutes": "Mostrar Minutos",
     "show_seconds": "Mostrar Segundos"
+  },
+  "user": {
+    "power": "Energia",
+    "profile": "Perfil",
+    "logout": "Encerrar Sessão",
+    "lock": "Bloquear",
+    "restart": "Reiniciar",
+    "shutdown": "Desligar",
+    "in_development": "Em Desenvolvimento",
+    "change_image": "Alterar Imagem",
+    "change_name": "Alterar Nome",
+    "change_password": "Alterar Senha"
   }
 }

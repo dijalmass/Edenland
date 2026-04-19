@@ -1,0 +1,13 @@
+[[permission]]
+identifier = "user-commands"
+description = "Permissions for user and power management commands"
+commands.allow = [
+  "system_poweroff",
+  "system_reboot",
+  "system_lock",
+  "system_logout",
+  "get_user_info",
+  "update_user_name",
+  "update_user_password",
+  "update_user_avatar"
+]

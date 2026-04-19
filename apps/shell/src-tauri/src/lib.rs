@@ -1,5 +1,6 @@
 mod network;
 mod battery;
+mod user;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -13,7 +14,15 @@ pub fn run() {
       network::disconnect_from_wifi,
       battery::get_battery_status,
       battery::get_power_profiles,
-      battery::set_power_profile
+      battery::set_power_profile,
+      user::system_poweroff,
+      user::system_reboot,
+      user::system_lock,
+      user::system_logout,
+      user::get_user_info,
+      user::update_user_name,
+      user::update_user_password,
+      user::update_user_avatar
     ])
     .setup(|_app| {
       Ok(())

@@ -8,6 +8,7 @@
   "permissions": [
     "core:default",
     "network-commands",
-    "battery-commands"
+    "battery-commands",
+    "user-commands"
   ]
 }

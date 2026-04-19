@@ -7,6 +7,7 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
 ### Added
+- **User Manager**: Implementação do gerenciador de sessão (logout, lock, restart, shutdown) via `loginctl` e modal de perfil de usuário com badge em desenvolvimento (mock).
 - **Shell**: Transição do header horizontal para um dock vertical lateral direito.
 - **DateTime Manager**: Novo componente para exibição de data e hora com calendário, e painel de configurações para formatar a visualização.
 - **Core**: Inicialização do Monorepo utilizando Bun e Turborepo.
