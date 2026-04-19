@@ -23,9 +23,18 @@ O identificador do bundle no `tauri.conf.json` deve ser único.
 - **Valor atual**: `com.edenland.shell`
 
 ## Como gerar
-```bash
-bun run build:iso
-```
+
+### Localmente
+Devido ao uso do Turborepo e buffering de saída, o `sudo` pode travar o terminal se executado da raiz. Recomenda-se:
+1. Validar o sudo: `sudo -v`
+2. Executar diretamente na pasta: 
+   ```bash
+   cd packages/iso-builder && bun run build:iso
+   ```
+
+### CI/CD
+Em ambientes de CI, o comando pode ser executado normalmente pela raiz ou via Turborepo, desde que o runner tenha permissões de `sudo` sem senha (passwordless) e suporte a loopback devices.
 
 ## Changelog de Correções
 - **2026-04-19**: Corrigido o erro `com.tauri.dev is not allowed` que impedia o build de produção do shell dentro do fluxo da ISO.
+- **2026-04-19**: Ajustado o script de build para usar `sudo -E` e documentada a estratégia para evitar travamentos de TTY no Turborepo.

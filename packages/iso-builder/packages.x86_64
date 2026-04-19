@@ -15,7 +15,7 @@ wireplumber
 bluez
 bluez-utils
 brightnessctl
-powerprofilesctl
+power-profiles-daemon
 webkit2gtk-4.1
 libappindicator-gtk3
 librsvg
@@ -35,3 +35,5 @@ efibootmgr
 os-prober
 mtools
 dosfstools
+memtest86+
+memtest86+-efi

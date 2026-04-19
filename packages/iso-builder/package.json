@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "pre-build": "mkdir -p airootfs/usr/bin && cp ../../apps/shell/src-tauri/target/release/edenland airootfs/usr/bin/edenland",
-    "build:iso": "npm run pre-build && sudo mkarchiso -v -w ./work -o ./out .",
+    "build:iso": "bun run pre-build && sudo -E mkarchiso -v -w ./work -o ./out .",
     "clean": "sudo rm -rf ./work ./out"
   },
   "devDependencies": {

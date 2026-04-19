@@ -20,7 +20,12 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
 ### Fixed
+- **ISO Builder**: Corrigido o nome do pacote `powerprofilesctl` para `power-profiles-daemon` na lista de pacotes.
+- **ISO Builder**: Corrigido erro 404 ao tentar sincronizar o repositório `community` (descontinuado e fundido ao `extra`) e otimizado `pacman.conf` com `ParallelDownloads` e feedback visual.
+
 - **Shell**: Correção do erro de build de produção (`com.tauri.dev` identifier) permitindo a geração da ISO.
+- **ISO Builder**: Corrigido travamento de TTY durante o build causado pelo prompt do `sudo` dentro do Turborepo; atualizados modos de boot depreciados, restauradas pastas de configuração (`grub`/`syslinux`), limpas permissões de arquivos inexistentes no `profiledef.sh` e atualizado o README com instruções de build Local vs CI/CD.
+
 
 ### Added
 - **Edenland Installer**: Script `install.sh` automatizado que gerencia dependências, sessão Wayland e atualização via GitHub API.
