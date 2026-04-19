@@ -1,0 +1,8 @@
+[[permission]]
+identifier = "battery-commands"
+description = "Permissions for battery and power management commands"
+commands.allow = [
+  "get_battery_status",
+  "get_power_profiles",
+  "set_power_profile"
+]

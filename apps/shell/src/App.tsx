@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { NetworkManager } from './components/NetworkManager'
+import { BatteryManager } from './components/BatteryManager'
 import { Toaster } from 'sonner'
 
 function App() {
@@ -10,8 +11,8 @@ function App() {
       {/* Invisible Header Container */}
       <header className="fixed top-0 left-0 right-0 h-12 flex justify-end items-center px-4 z-50">
         <div className="flex items-center gap-2">
-          {/* Outros futuros ícones podem entrar aqui (Bateria, Som, etc) */}
           <NetworkManager />
+          <BatteryManager />
         </div>
       </header>
 

@@ -21,5 +21,15 @@
     "searching": "Searching for networks...",
     "enable_wifi_description": "Enable Wi-Fi to see available networks around you.",
     "disconnect": "Disconnect"
+  },
+  "battery": {
+    "title": "Battery",
+    "power_plans": "Power Plans",
+    "show_percentage": "Show Percentage",
+    "charging": "Charging",
+    "discharging": "Discharging",
+    "full": "Fully Charged",
+    "select_plan": "Select Plan",
+    "manage_power": "Manage Power"
   }
 }

@@ -168,6 +168,13 @@ MANDATORY: Every UI component must follow the atomic feature directory pattern:
    - `ComponentName.styles.css` (If component-specific styles are needed)
    - `index.ts` (Barrel export for clean imports)
 
+### 📝 Feature Documentation & Changelog Protocol
+
+**MANDATORY FOR EVERY NEW FEATURE OR COMPLETED TASK:**
+1. **Feature Docs:** Create a documentation file under `docs/features/<feature_name>/implementation.md` before or during implementation.
+2. **Changelog:** Always update `docs/CHANGELOG.md` when planning a new feature (under `[Planejado]`) and when completing it (move to `Added/Changed/Fixed` under `[Unreleased]`).
+*Do NOT wait for the user to explicitly ask to update the docs or the changelog.*
+
 ### 🛑 Socratic Gate
 
 **For complex requests, STOP and ASK first:**

@@ -21,5 +21,15 @@
     "searching": "Procurando redes...",
     "enable_wifi_description": "Ative o Wi-Fi para ver as redes disponíveis ao seu redor.",
     "disconnect": "Desconectar"
+  },
+  "battery": {
+    "title": "Bateria",
+    "power_plans": "Planos de Energia",
+    "show_percentage": "Mostrar Porcentagem",
+    "charging": "Carregando",
+    "discharging": "Descarregando",
+    "full": "Totalmente carregada",
+    "select_plan": "Selecionar Plano",
+    "manage_power": "Gerenciar Energia"
   }
 }
