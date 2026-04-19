@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { NetworkManager } from './components/NetworkManager'
 import { BatteryManager } from './components/BatteryManager'
+import { DateTimeManager } from './components/DateTimeManager'
 import { Toaster } from 'sonner'
 
 function App() {
@@ -8,13 +9,17 @@ function App() {
 
   return (
     <div className="min-h-screen bg-transparent w-full font-sans">
-      {/* Invisible Header Container */}
-      <header className="fixed top-0 left-0 right-0 h-12 flex justify-end items-center px-4 z-50">
-        <div className="flex items-center gap-2">
-          <NetworkManager />
-          <BatteryManager />
+      {/* Vertical Side Dock (Right) */}
+      <aside className="fixed top-0 right-0 bottom-0 w-max flex flex-col items-end py-2 pr-2 z-50 pointer-events-none">
+        <div className="flex flex-col items-end gap-2 w-full pointer-events-auto">
+          <DateTimeManager />
+          
+          <div className="flex flex-col items-stretch gap-3">
+            <NetworkManager />
+            <BatteryManager />
+          </div>
         </div>
-      </header>
+      </aside>
 
       {/* Conteúdo Central do Desktop (Wallpapers, Widgets, etc) */}
       <main className="pt-16 px-8 flex flex-col items-center justify-center min-h-screen">

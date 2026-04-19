@@ -556,12 +556,13 @@ When reviewing frontend code, verify:
 
 ## Quality Control Loop (MANDATORY)
 
-After editing any file:
+After editing any file or planning a new feature:
 
-1. **Run validation**: `npm run lint && npx tsc --noEmit`
-2. **Fix all errors**: TypeScript and linting must pass
-3. **Verify functionality**: Test the change works as intended
-4. **Report complete**: Only after quality checks pass
+1. **Feature Docs & Changelog (MANDATORY)**: You MUST update `docs/CHANGELOG.md` under `[Planejado]` and create `docs/features/<feature_name>/implementation.md` BEFORE or DURING implementation. When finishing, move it to `[Unreleased]` -> `Added/Changed/Fixed`.
+2. **Run validation**: `npm run lint && npx tsc --noEmit`
+3. **Fix all errors**: TypeScript and linting must pass
+4. **Verify functionality**: Test the change works as intended
+5. **Report complete**: Only after quality checks pass
 
 ## When You Should Be Used
 

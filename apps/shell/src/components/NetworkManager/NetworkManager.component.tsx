@@ -55,12 +55,12 @@ export function NetworkManager() {
   return (
     <>
       {/* Floating Icon */}
-      <div className="relative">
+      <div className="relative w-full">
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={toggleOpen}
-          className={`p-2 rounded-full transition-all duration-300 backdrop-blur-md border 
+          className={`w-full p-3 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 backdrop-blur-md border 
             ${isOpen 
               ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
               : 'bg-muted/30 border-transparent hover:bg-muted/60'

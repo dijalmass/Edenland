@@ -56,13 +56,13 @@ export function BatteryManager() {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative w-full">
         <motion.button
           layout
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setIsOpen(!isOpen)}
-          className={`px-3 py-2 rounded-full flex items-center gap-2 transition-all duration-300 backdrop-blur-md border 
+          className={`w-full p-3 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all duration-300 backdrop-blur-md border 
             ${isOpen 
               ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
               : 'bg-muted/30 border-transparent hover:bg-muted/60'
@@ -73,10 +73,10 @@ export function BatteryManager() {
           <AnimatePresence>
             {showPercentage && status && (
               <motion.span 
-                initial={{ opacity: 0, x: -5 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -5 }}
-                className={`text-xs font-bold tracking-tight ${isOpen ? 'text-primary' : 'text-foreground'}`}
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                className={`text-[10px] font-bold tracking-tighter leading-none ${isOpen ? 'text-primary' : 'text-foreground'}`}
               >
                 {status.percentage}%
               </motion.span>

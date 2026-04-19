@@ -2,8 +2,13 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [Planejado]
+- Nenhuma feature pendente no momento.
+
 ## [Unreleased]
 ### Added
+- **Shell**: Transição do header horizontal para um dock vertical lateral direito.
+- **DateTime Manager**: Novo componente para exibição de data e hora com calendário, e painel de configurações para formatar a visualização.
 - **Core**: Inicialização do Monorepo utilizando Bun e Turborepo.
 - **Shell**: Estrutura base da aplicação shell com Tauri v2 e React.
 - **Network Manager**: Integração completa com o `NetworkManager` Linux.

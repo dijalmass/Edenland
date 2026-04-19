@@ -14,6 +14,7 @@
     "refresh": "Refresh",
     "no_networks": "No networks found",
     "manage_connections": "Manage Connections",
+    "on": "On",
     "off": "Off",
     "password_required": "Authentication Required",
     "password_placeholder": "Enter network password...",
@@ -31,5 +32,16 @@
     "full": "Fully Charged",
     "select_plan": "Select Plan",
     "manage_power": "Manage Power"
+  },
+  "datetime": {
+    "title": "Date & Time",
+    "calendar": "Calendar",
+    "settings": "Settings",
+    "show_day_name": "Show Day Name",
+    "show_date": "Show Date",
+    "normalized_date": "Normalized Date",
+    "show_hours": "Show Hours",
+    "show_minutes": "Show Minutes",
+    "show_seconds": "Show Seconds"
   }
 }

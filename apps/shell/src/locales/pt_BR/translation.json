@@ -14,6 +14,7 @@
     "refresh": "Atualizar",
     "no_networks": "Nenhuma rede encontrada",
     "manage_connections": "Gerenciar Conexões",
+    "on": "Ativado",
     "off": "Desativado",
     "password_required": "Autenticação Necessária",
     "password_placeholder": "Digite a senha da rede...",
@@ -31,5 +32,16 @@
     "full": "Totalmente carregada",
     "select_plan": "Selecionar Plano",
     "manage_power": "Gerenciar Energia"
+  },
+  "datetime": {
+    "title": "Data e Hora",
+    "calendar": "Calendário",
+    "settings": "Configurações",
+    "show_day_name": "Mostrar Nome do Dia",
+    "show_date": "Mostrar Data",
+    "normalized_date": "Data Normalizada",
+    "show_hours": "Mostrar Horas",
+    "show_minutes": "Mostrar Minutos",
+    "show_seconds": "Mostrar Segundos"
   }
 }
