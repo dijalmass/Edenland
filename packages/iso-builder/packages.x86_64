@@ -1,0 +1,37 @@
+# Base System
+base
+linux
+linux-firmware
+sudo
+networkmanager
+git
+
+# Wayland & Desktop
+wayland
+hyprland
+pipewire
+pipewire-pulse
+wireplumber
+bluez
+bluez-utils
+brightnessctl
+powerprofilesctl
+webkit2gtk-4.1
+libappindicator-gtk3
+librsvg
+hyprpaper
+greetd
+greetd-tuigreet
+
+# Development / Build tools (opcional na ISO, mas útil para testes)
+bun
+rustup
+
+# ISO specific
+arch-install-scripts
+syslinux
+grub
+efibootmgr
+os-prober
+mtools
+dosfstools

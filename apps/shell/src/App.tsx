@@ -4,12 +4,18 @@ import { BatteryManager } from './components/BatteryManager'
 import { DateTimeManager } from './components/DateTimeManager'
 import { UserManager } from './components/UserManager'
 import { Toaster } from 'sonner'
+import wallpaper from './assets/wallpapers/default.png'
 
 function App() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-transparent w-full font-sans">
+    <div 
+      className="relative min-h-screen w-full font-sans bg-cover bg-center bg-no-repeat transition-all duration-700"
+      style={{ backgroundImage: `url(${wallpaper})` }}
+    >
+      {/* Overlay leve para garantir contraste se necessário */}
+      <div className="absolute inset-0 bg-black/30 pointer-events-none" />
       {/* Vertical Side Dock (Right) */}
       <aside className="fixed top-0 right-0 bottom-0 w-max flex flex-col items-end py-2 pr-2 z-50 pointer-events-none">
         <div className="flex flex-col items-end gap-2 w-full pointer-events-auto h-full">

@@ -1,0 +1,13 @@
+[terminal]
+# O tty onde a tela de login vai aparecer
+vt = 1
+
+[default_session]
+# Comando para iniciar o tuigreet
+# --time: mostra o relógio
+# --remember: lembra o último usuário
+# --cmd: o comando que será executado após o login bem-sucedido
+command = "tuigreet --time --remember --cmd 'Hyprland --config ~/.config/hypr/edenland.conf'"
+
+# O usuário que executa a tela de login (deve pertencer ao grupo video)
+user = "greeter"

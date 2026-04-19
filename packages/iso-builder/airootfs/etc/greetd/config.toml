@@ -1,0 +1,8 @@
+[terminal]
+vt = 1
+
+[default_session]
+# Na ISO, fazemos login automático direto no Hyprland para o usuário 'archuser'
+# (Usuário padrão do Archiso)
+command = "Hyprland --config /etc/edenland/hyprland.conf"
+user = "archuser"

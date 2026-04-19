@@ -43,7 +43,7 @@ export function UserManager() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full p-3 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all duration-300 backdrop-blur-md border 
+          className={`w-full p-2 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all duration-300 backdrop-blur-md border 
             ${isOpen 
               ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
               : 'bg-muted/30 border-transparent hover:bg-muted/60'
@@ -54,12 +54,12 @@ export function UserManager() {
             <img 
               src={userInfo.avatar} 
               alt="User avatar" 
-              className="w-8 h-8 rounded-full object-cover border border-muted/50"
+              className="w-7 h-7 rounded-full object-cover border border-muted/50"
             />
           ) : (
-            <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-              <span className="text-xs font-bold text-primary">
-                {userInfo ? getInitials(userInfo.name) : <User className="w-4 h-4" />}
+            <div className="w-7 h-7 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+              <span className="text-[10px] font-bold text-primary">
+                {userInfo ? getInitials(userInfo.name) : <User className="w-3.5 h-3.5" />}
               </span>
             </div>
           )}
