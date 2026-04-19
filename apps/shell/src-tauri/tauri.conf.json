@@ -2,17 +2,17 @@
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "edenland",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "com.edenland",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",
     "beforeDevCommand": "bun run dev",
-    "beforeBuildCommand": "bun run build"
+    "beforeBuildCommand": "tsc -b && vite build"
   },
   "app": {
     "windows": [
       {
-        "title": "Edenland Shell",
+        "title": "Edenland",
         "width": 800,
         "height": 600,
         "resizable": true,

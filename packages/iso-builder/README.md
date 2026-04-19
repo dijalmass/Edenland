@@ -14,25 +14,19 @@ sudo pacman -S archiso
 
 O processo é automatizado via Turborepo e scripts internos. Siga os passos abaixo:
 
-### 1. Compilar o Shell
-A ISO precisa do binário mais recente do shell. Certifique-se de buildar o app primeiro:
+### 1. Gerar a ISO (Recomendado)
+O Turborepo cuidará de compilar o shell e preparar os binários automaticamente:
 
 ```bash
 # Na raiz do projeto
-bun run build
-```
-
-### 2. Gerar a ISO
-Execute o comando de build dentro da pasta do `iso-builder` (ou via turbo):
-
-```bash
-# Via Turborepo (Recomendado)
-bun turbo run build:iso
-
-# Ou diretamente na pasta
-cd packages/iso-builder
 bun run build:iso
 ```
+
+### 2. Manualmente (Caso necessário)
+Se preferir compilar as etapas separadamente:
+
+1. Compile o shell: `bun run build`
+2. Prepare a ISO: `cd packages/iso-builder && bun run build:iso`
 
 ### 3. Limpeza
 Se precisar resetar o ambiente de build (limpar cache do archiso):

@@ -19,6 +19,9 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 - **Bluetooth Manager**: Integração com `bluetoothctl` para permitir varredura e pareamento simplificado de dispositivos sem fio.
 
 ## [Unreleased]
+### Fixed
+- **Shell**: Correção do erro de build de produção (`com.tauri.dev` identifier) permitindo a geração da ISO.
+
 ### Added
 - **Edenland Installer**: Script `install.sh` automatizado que gerencia dependências, sessão Wayland e atualização via GitHub API.
 - **ISO Builder**: Estrutura baseada em Archiso para geração de imagens live com autologin e shell pré-configurado.

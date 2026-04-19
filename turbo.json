@@ -1,14 +1,18 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!-dist/cache/**"]
+      "outputs": ["dist/**", ".next/**", "src-tauri/target/release/edenland", "!-dist/cache/**"]
     },
     "lint": {},
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "build:iso": {
+      "dependsOn": ["^build"],
+      "cache": false
     }
   }
 }

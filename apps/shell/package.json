@@ -1,12 +1,12 @@
 {
-  "name": "@edenland/shell",
+  "name": "@edenland/edenland",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "tauri": "tauri",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && tauri build --no-bundle",
     "lint": "eslint .",
     "preview": "vite preview"
   },

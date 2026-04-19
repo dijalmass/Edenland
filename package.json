@@ -12,11 +12,12 @@
     "tauri": "bun --cwd apps/shell tauri dev",
     "setup": "./scripts/setup.sh",
     "build": "turbo run build",
+    "build:iso": "turbo run build:iso",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules"
   },
   "devDependencies": {
-    "turbo": "^1.12.0"
+    "turbo": "^2.6.1"
   }
 }

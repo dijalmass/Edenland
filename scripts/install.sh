@@ -76,7 +76,7 @@ else
     cat <<EOF > ~/.config/hypr/edenland.conf
 # Edenland Hyprland Fallback Config
 monitor=,preferred,auto,1
-exec-once = edenland-shell
+exec-once = edenland
 general { gaps_in = 0; gaps_out = 0; border_size = 0; }
 decoration { rounding = 0; drop_shadow = false; }
 EOF
@@ -127,10 +127,10 @@ else
             echo -e "${RED}Erro: Não foi possível encontrar um binário compatível no release $LATEST_VERSION.${NC}"
         else
             echo -e "${BLUE}Baixando $LATEST_VERSION...${NC}"
-            curl -L "$DOWNLOAD_URL" -o /tmp/edenland-shell
+            curl -L "$DOWNLOAD_URL" -o /tmp/edenland
             
             echo -e "${BLUE}Instalando binário...${NC}"
-            sudo mv /tmp/edenland-shell "$INSTALL_PATH"
+            sudo mv /tmp/edenland "$INSTALL_PATH"
             sudo chmod +x "$INSTALL_PATH"
             
             sudo mkdir -p "$VERSION_DIR"

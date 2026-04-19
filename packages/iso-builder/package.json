@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "pre-build": "mkdir -p airootfs/usr/bin && cp ../../apps/shell/src-tauri/target/release/edenland-shell airootfs/usr/bin/edenland-shell",
+    "pre-build": "mkdir -p airootfs/usr/bin && cp ../../apps/shell/src-tauri/target/release/edenland airootfs/usr/bin/edenland",
     "build:iso": "npm run pre-build && sudo mkarchiso -v -w ./work -o ./out .",
     "clean": "sudo rm -rf ./work ./out"
+  },
+  "devDependencies": {
+    "@edenland/edenland": "workspace:*"
   }
 }

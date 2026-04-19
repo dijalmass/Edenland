@@ -55,7 +55,7 @@ Para rodar o ambiente de desenvolvimento dentro do seu sistema atual (Nested Ses
    bun install
 
 3. Execute a UI em modo de desenvolvimento:
-   bun run dev --filter @edenland/shell
+   bun run dev --filter @edenland/edenland
 
 ## Distribuição
 
