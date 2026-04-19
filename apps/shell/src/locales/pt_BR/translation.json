@@ -1,0 +1,25 @@
+{
+  "desktop": {
+    "title": "Edenland Desktop",
+    "subtitle": "Uma nova fundação nativa."
+  },
+  "network": {
+    "wifi": "Wi-Fi",
+    "connected": "Conectado",
+    "saved": "Salva",
+    "disabled": "O Wi-Fi está desativado.",
+    "settings": "Configurações de Rede",
+    "password": "Senha",
+    "connect": "Conectar",
+    "refresh": "Atualizar",
+    "no_networks": "Nenhuma rede encontrada",
+    "manage_connections": "Gerenciar Conexões",
+    "off": "Desativado",
+    "password_required": "Autenticação Necessária",
+    "password_placeholder": "Digite a senha da rede...",
+    "cancel": "Cancelar",
+    "searching": "Procurando redes...",
+    "enable_wifi_description": "Ative o Wi-Fi para ver as redes disponíveis ao seu redor.",
+    "disconnect": "Desconectar"
+  }
+}

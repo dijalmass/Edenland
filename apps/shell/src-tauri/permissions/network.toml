@@ -1,0 +1,10 @@
+[[permission]]
+identifier = "network-commands"
+description = "Permissions for network management commands"
+commands.allow = [
+  "get_wifi_status",
+  "toggle_wifi",
+  "scan_wifi_networks",
+  "connect_to_wifi",
+  "disconnect_from_wifi"
+]

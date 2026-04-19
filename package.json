@@ -1,0 +1,22 @@
+{
+  "name": "edenland-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "bun@1.3.12",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "tauri": "bun --cwd apps/shell tauri dev",
+    "setup": "./scripts/setup.sh",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^1.12.0"
+  }
+}
