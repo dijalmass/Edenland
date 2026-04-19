@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Wifi, WifiOff, Lock, ChevronRight, Loader2, Eye, EyeOff, X, Check } from 'lucide-react';
+import { Wifi, WifiOff, Lock, ChevronRight, Loader2, Eye, EyeOff, X, Check, Settings } from 'lucide-react';
 import { useNetworkManager } from './NetworkManager.hook';
 import type { Network } from './NetworkManager.types';
 import { useForm } from 'react-hook-form';
@@ -138,19 +138,19 @@ export function NetworkManager() {
                   networks.length > 0 ? (
                     networks.map((net, i) => (
                       <motion.div 
-                        key={net.ssid} 
+                        key={`${net.ssid}-${i}`} 
                         layout 
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         className="flex flex-col gap-1"
                       >
-                        <motion.button
+                        <motion.div
                           layout
                           whileHover={{ x: 4 }}
                           whileTap={{ scale: 0.98 }}
                           onClick={() => handleNetworkClick(net)}
-                          className={`group w-full flex items-center justify-between p-3.5 rounded-2xl transition-all duration-200 border
+                          className={`group w-full flex items-center justify-between p-3.5 rounded-2xl transition-all duration-200 border cursor-pointer
                             ${net.connected 
                               ? 'bg-primary/10 border-primary/30 shadow-sm' 
                               : selectedNetwork?.ssid === net.ssid
@@ -204,7 +204,7 @@ export function NetworkManager() {
                               </div>
                             )}
                           </div>
-                        </motion.button>
+                        </motion.div>
 
                         <AnimatePresence>
                           {selectedNetwork?.ssid === net.ssid && !net.connected && (
@@ -305,7 +305,7 @@ export function NetworkManager() {
                     {t('network.refresh')}
                   </button>
                   <button className="flex items-center gap-2 text-[11px] text-primary hover:text-primary/80 font-black uppercase tracking-widest transition-all">
-                    <X className="w-3 h-3" />
+                    <Settings className="w-3.5 h-3.5" />
                     {t('network.settings')}
                   </button>
                 </div>

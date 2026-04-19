@@ -10,17 +10,18 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
 ### Core & Shell
 - **Shell UX Refinement**: Transição do Shell de uma janela comum para uma interface de sistema nativa (sem header/decorações) e modo tela cheia.
+- **Theme Engine**: Sistema de personalização dinâmica que permite alterar tanto a cor de destaque (accent) quanto a cor base (primária) do sistema, com derivação automática de tons.
 - **Hyprland Compatibility**: Atualização das regras de janela para a nova sintaxe unificada `windowrule` e desativação de processos redundantes de wallpaper.
 - **System Theme**: Refinamento da transparência e integração visual entre o compositor e o shell.
 - **System Tray**: Área designada no Dock para abrigar ícones e interações de aplicações em segundo plano.
 - **Central de Notificações**: Painel unificado para histórico de alertas, expandindo as notificações já existentes.
 
 ### Hardware & Gestão de Sistema
-- **Display / Brightness Manager**: Interface gráfica e atalhos para controle nativo do brilho da tela e arranjo de monitores.
 - **Bluetooth Manager**: Integração com `bluetoothctl` para permitir varredura e pareamento simplificado de dispositivos sem fio.
 
 ## [Unreleased]
 ### Fixed
+- **Audio Manager**: Removido botão incorreto de "Configurações de Rede" que aparecia no modal de áudio.
 - **ISO Builder**: Corrigido o nome do pacote `powerprofilesctl` para `power-profiles-daemon` na lista de pacotes.
 - **ISO Builder**: Corrigido erro 404 ao tentar sincronizar o repositório `community` (descontinuado e fundido ao `extra`) e otimizado `pacman.conf` com `ParallelDownloads` e feedback visual.
 - **ISO Builder**: Corrigido erro "Failed to start Switch Root" adicionando `mkinitcpio-archiso` e configurando os hooks corretos no `mkinitcpio.conf` da ISO.
@@ -61,3 +62,4 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
   - Seleção dinâmica de dispositivos de saída (Sinks).
   - Controle de volume individual por aplicação (Sink Inputs).
   - Design premium glassmorphism integrado à identidade visual.
+- **Display Manager**: Gerenciamento de brilho, monitores (canvas) e temas de cores (Em andamento).

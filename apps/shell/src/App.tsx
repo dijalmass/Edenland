@@ -1,13 +1,22 @@
 import { NetworkManager } from './components/NetworkManager'
 import { AudioManager } from './components/AudioManager'
 import { BatteryManager } from './components/BatteryManager'
+import { DisplayManager } from './components/DisplayManager'
 import { DateTimeManager } from './components/DateTimeManager'
 import { WelcomeModal } from './components/WelcomeModal'
 import { Toaster } from 'sonner'
 import wallpaper from './assets/wallpapers/default.png'
 import { UserManager } from './components/UserManager'
+import { useEffect } from 'react'
 
 function App() {
+  useEffect(() => {
+    const savedColor = localStorage.getItem('edenland-accent-color');
+    if (savedColor) {
+      document.documentElement.style.setProperty('--color-glory-gold', savedColor);
+    }
+  }, []);
+
   return (
     <div 
       className="relative min-h-screen w-full font-sans bg-cover bg-center bg-no-repeat transition-all duration-700"
@@ -25,6 +34,7 @@ function App() {
             <NetworkManager />
             <AudioManager />
             <BatteryManager />
+            <DisplayManager />
           </div>
 
           <div className="mt-auto pt-2">

@@ -10,6 +10,7 @@
     "network-commands",
     "battery-commands",
     "user-commands",
-    "audio-commands"
+    "audio-commands",
+    "display-commands"
   ]
 }

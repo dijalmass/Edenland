@@ -2,6 +2,7 @@ mod network;
 mod battery;
 mod user;
 mod audio;
+mod display;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -30,7 +31,13 @@ pub fn run() {
       audio::set_master_volume,
       audio::set_master_mute,
       audio::set_default_sink,
-      audio::set_app_volume
+      audio::set_app_volume,
+      display::get_brightness,
+      display::set_brightness,
+      display::get_monitors,
+      display::get_workspaces,
+      display::apply_monitor_config,
+      display::set_workspace_monitor
     ])
     .setup(|_app| {
       Ok(())

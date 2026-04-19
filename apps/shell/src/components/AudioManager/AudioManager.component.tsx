@@ -211,13 +211,7 @@ export function AudioManager() {
                 </div>
               </div>
 
-              {/* Settings Footer */}
-              <div className="pt-6 mt-4 border-t border-muted/50 flex justify-end">
-                <button className="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-muted transition-colors text-muted-foreground">
-                  <Settings className="w-4 h-4" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest">{t('network.settings')}</span>
-                </button>
-              </div>
+
             </motion.div>
           </div>
         )}

@@ -19,7 +19,7 @@ export function useNetworkManager() {
     } catch (err) {
       console.error('Failed to get Wi-Fi status:', err);
     }
-  }, []);
+  }, [invoke]);
 
   const scanNetworks = useCallback(async () => {
     if (!invoke || !wifiEnabled || isLoading) return;
@@ -29,13 +29,13 @@ export function useNetworkManager() {
     try {
       const result = await invoke<Network[]>('scan_wifi_networks');
       setNetworks(result);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Failed to scan networks:', err);
-      setError(err?.toString() || 'Failed to scan networks');
+      setError(err instanceof Error ? err.message : String(err));
     } finally {
       setIsLoading(false);
     }
-  }, [wifiEnabled]);
+  }, [invoke, wifiEnabled, isLoading]);
 
   useEffect(() => {
     fetchWifiStatus();
@@ -78,9 +78,9 @@ export function useNetworkManager() {
       await invoke('connect_to_wifi', { ssid, password });
       toast.success(`Conectado a ${ssid}`);
       await scanNetworks();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Failed to connect:', err);
-      const msg = err?.toString() || 'Connection failed';
+      const msg = err instanceof Error ? err.message : String(err);
       setError(msg);
       toast.error(`Erro ao conectar: ${msg}`);
     } finally {
@@ -96,9 +96,9 @@ export function useNetworkManager() {
       await invoke('disconnect_from_wifi');
       toast.success('Desconectado com sucesso');
       await scanNetworks();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Failed to disconnect:', err);
-      const msg = err?.toString() || 'Disconnection failed';
+      const msg = err instanceof Error ? err.message : String(err);
       setError(msg);
       toast.error(`Erro ao desconectar: ${msg}`);
     } finally {

@@ -1,0 +1,11 @@
+[[permission]]
+identifier = "display-commands"
+description = "Permissions for display arrangement, brightness, color management and workspaces commands"
+commands.allow = [
+  "get_brightness",
+  "set_brightness",
+  "get_monitors",
+  "get_workspaces",
+  "apply_monitor_config",
+  "set_workspace_monitor"
+]

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { invoke } from '@tauri-apps/api/core';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
@@ -9,18 +9,18 @@ export function useUserManager() {
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [activeTab, setActiveTab] = useState<TabType>('power');
 
-  useEffect(() => {
-    fetchUserInfo();
-  }, []);
-
-  const fetchUserInfo = async () => {
+  const fetchUserInfo = useCallback(async () => {
     try {
       const data: UserInfo = await invoke('get_user_info');
       setUserInfo(data);
     } catch (err) {
       console.error('Failed to get user info:', err);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, [fetchUserInfo]);
 
   const executePowerCommand = async (command: string, label: string) => {
     try {
