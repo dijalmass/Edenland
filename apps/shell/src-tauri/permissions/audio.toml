@@ -1,0 +1,12 @@
+[[permission]]
+identifier = "audio-commands"
+description = "Permissions for audio management commands"
+commands.allow = [
+  "get_audio_status",
+  "get_output_devices",
+  "get_app_volumes",
+  "set_master_volume",
+  "set_master_mute",
+  "set_default_sink",
+  "set_app_volume"
+]

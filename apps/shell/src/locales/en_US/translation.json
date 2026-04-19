@@ -56,6 +56,15 @@
     "change_name": "Change Name",
     "change_password": "Change Password"
   },
+  "audio": {
+    "title": "Audio",
+    "master_volume": "Master Volume",
+    "output_devices": "Output Devices",
+    "applications": "Applications",
+    "no_apps": "No active applications",
+    "mute": "Mute",
+    "unmute": "Unmute"
+  },
   "welcome": {
     "title": "Welcome to Edenland",
     "description": "Your new native foundation is ready. A system focused on performance, minimalist design, and total control.",

@@ -1,6 +1,7 @@
 mod network;
 mod battery;
 mod user;
+mod audio;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -22,7 +23,14 @@ pub fn run() {
       user::get_user_info,
       user::update_user_name,
       user::update_user_password,
-      user::update_user_avatar
+      user::update_user_avatar,
+      audio::get_audio_status,
+      audio::get_output_devices,
+      audio::get_app_volumes,
+      audio::set_master_volume,
+      audio::set_master_mute,
+      audio::set_default_sink,
+      audio::set_app_volume
     ])
     .setup(|_app| {
       Ok(())

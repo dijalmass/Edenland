@@ -16,7 +16,6 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 - **Central de Notificações**: Painel unificado para histórico de alertas, expandindo as notificações já existentes.
 
 ### Hardware & Gestão de Sistema
-- **Audio / Volume Manager**: Gestão completa de áudio, englobando controle de saídas, entradas e volume geral via PipeWire/PulseAudio.
 - **Display / Brightness Manager**: Interface gráfica e atalhos para controle nativo do brilho da tela e arranjo de monitores.
 - **Bluetooth Manager**: Integração com `bluetoothctl` para permitir varredura e pareamento simplificado de dispositivos sem fio.
 
@@ -57,3 +56,8 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
   - Toggle para exibir/ocultar porcentagem na barra superior.
   - Modal para seleção de planos de energia (via `powerprofilesctl`).
   - Persistência de preferências em `localStorage`.
+- **Audio Manager**: Integração completa para gestão de som.
+  - Controle de volume mestre e mudo com feedback visual no Dock.
+  - Seleção dinâmica de dispositivos de saída (Sinks).
+  - Controle de volume individual por aplicação (Sink Inputs).
+  - Design premium glassmorphism integrado à identidade visual.

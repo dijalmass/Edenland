@@ -9,6 +9,7 @@
     "core:default",
     "network-commands",
     "battery-commands",
-    "user-commands"
+    "user-commands",
+    "audio-commands"
   ]
 }

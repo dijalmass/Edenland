@@ -20,13 +20,11 @@ pub fn get_battery_status() -> Result<BatteryStatus, String> {
     let entries = fs::read_dir(power_supply_dir).map_err(|e| format!("Failed to read power supply dir: {}", e))?;
 
     let mut battery_dev = None;
-    for entry in entries {
-        if let Ok(entry) = entry {
-            let name = entry.file_name().to_string_lossy().to_string();
-            if name.starts_with("BAT") {
-                battery_dev = Some(name);
-                break;
-            }
+    for entry in entries.flatten() {
+        let name = entry.file_name().to_string_lossy().to_string();
+        if name.starts_with("BAT") {
+            battery_dev = Some(name);
+            break;
         }
     }
 

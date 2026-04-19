@@ -1,4 +1,5 @@
 import { NetworkManager } from './components/NetworkManager'
+import { AudioManager } from './components/AudioManager'
 import { BatteryManager } from './components/BatteryManager'
 import { DateTimeManager } from './components/DateTimeManager'
 import { WelcomeModal } from './components/WelcomeModal'
@@ -22,6 +23,7 @@ function App() {
           
           <div className="flex flex-col items-stretch gap-3 flex-1">
             <NetworkManager />
+            <AudioManager />
             <BatteryManager />
           </div>
 
