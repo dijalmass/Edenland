@@ -3,11 +3,13 @@ mod battery;
 mod user;
 mod audio;
 mod display;
+mod package_manager;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
   tauri::Builder::default()
     .plugin(tauri_plugin_log::Builder::default().level(log::LevelFilter::Info).build())
+    .manage(package_manager::PackageManagerState::default())
     .invoke_handler(tauri::generate_handler![
       network::get_wifi_status,
       network::toggle_wifi,
@@ -41,7 +43,13 @@ pub fn run() {
       display::switch_workspace,
       display::focus_window,
       display::apply_monitor_config,
-      display::set_workspace_monitor
+      display::set_workspace_monitor,
+      package_manager::search_packages,
+      package_manager::get_package_info,
+      package_manager::execute_package_action,
+      package_manager::cancel_package_action,
+      package_manager::open_url,
+      package_manager::get_installed_packages
     ])
     .setup(|_app| {
       Ok(())

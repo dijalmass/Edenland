@@ -1,0 +1,11 @@
+[[permission]]
+identifier = "package-commands"
+description = "Permissions for package management commands (search, info, action)"
+commands.allow = [
+  "search_packages",
+  "get_package_info",
+  "execute_package_action",
+  "cancel_package_action",
+  "open_url",
+  "get_installed_packages"
+]

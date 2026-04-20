@@ -18,11 +18,13 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
 ### Hardware & Gestão de Sistema
 - **Bluetooth Manager**: Integração com `bluetoothctl` para permitir varredura e pareamento simplificado de dispositivos sem fio.
+- **Package Manager (Edenland Store)**: Interface unificada para `pacman` e `yay`, permitindo busca, instalação e remoção de pacotes com suporte a AUR e autenticação segura.
 
 ## [Unreleased]
 ### Added
 - **Workspace Switcher**: Novo visualizador de áreas de trabalho no header com suporte a preview de janelas (hover) e criação dinâmica até o workspace 9.
 - **Header**: Implementação de uma barra superior fixa para unificar controles de sistema e workspaces.
+- **Package Manager**: Novo sistema de console de instalação tri-estado (fechado, compacto, expandido) integrado ao rodapé, com bloqueio de fechamento durante operações e visualização de última linha de log em modo compacto.
 
 ### Fixed
 - **Audio Manager**: Removido botão incorreto de "Configurações de Rede" que aparecia no modal de áudio.

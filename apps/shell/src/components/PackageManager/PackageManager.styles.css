@@ -1,0 +1,29 @@
+@reference "../../index.css";
+
+.package-manager-card {
+  @apply bg-eden-slate/40 backdrop-blur-md border border-eden-mist/20 rounded-xl p-4 transition-all duration-300;
+}
+
+.package-manager-card:hover {
+  @apply bg-eden-slate/60 border-glory-gold/30 shadow-lg shadow-black/20;
+}
+
+.package-manager-input {
+  @apply w-full bg-eden-dark/40 border border-eden-mist/20 rounded-xl py-3 pl-11 pr-4 text-eden-light focus:outline-none focus:border-glory-gold/50 focus:ring-4 focus:ring-glory-gold/5 transition-all;
+}
+
+.action-button {
+  @apply px-4 py-2 rounded-lg font-bold transition-all active:scale-95;
+}
+
+.action-button-primary {
+  @apply bg-glory-gold text-eden-dark hover:shadow-[0_0_15px_rgba(212,175,55,0.3)];
+}
+
+.action-button-secondary {
+  @apply bg-white/5 border border-eden-mist/20 text-eden-light hover:bg-white/10;
+}
+
+.action-button-danger {
+  @apply bg-red-500/20 border border-red-500/30 text-red-400 hover:bg-red-500/30;
+}

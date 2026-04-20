@@ -13,9 +13,7 @@ export const useBatteryManager = () => {
 
   const fetchStatus = useCallback(async () => {
     try {
-      console.log('Fetching battery status...');
       const data = await invoke<BatteryStatus>('get_battery_status');
-      console.log('Battery Status Received:', data);
       setStatus(data);
     } catch (err) {
       console.error('Failed to fetch battery status:', err);

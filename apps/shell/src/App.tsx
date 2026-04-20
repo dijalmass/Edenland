@@ -3,10 +3,12 @@ import { AudioManager } from './components/AudioManager'
 import { BatteryManager } from './components/BatteryManager'
 import { DisplayManager } from './components/DisplayManager'
 import { Header } from './components/Header/Header'
+import { PackageManager } from './components/PackageManager'
 import { WelcomeModal } from './components/WelcomeModal'
 import { Toaster } from 'sonner'
 import wallpaper from './assets/wallpapers/default.png'
 import { UserManager } from './components/UserManager'
+import { AuthProvider, AuthModal } from './components/AuthModal'
 import { useEffect } from 'react'
 
 function App() {
@@ -18,14 +20,16 @@ function App() {
   }, []);
 
   return (
-    <div 
-      className="relative min-h-screen w-full font-sans bg-cover bg-center bg-no-repeat transition-all duration-700 overflow-hidden"
-      style={{ backgroundImage: `url(${wallpaper})` }}
-    >
-      {/* Header Unificado (justify-between: Workspaces e Data) - Floating */}
-      <Header />
-      
-      <WelcomeModal />
+    <AuthProvider>
+      <div 
+        className="relative min-h-screen w-full font-sans bg-cover bg-center bg-no-repeat transition-all duration-700 overflow-hidden"
+        style={{ backgroundImage: `url(${wallpaper})` }}
+      >
+        {/* Header Unificado (justify-between: Workspaces e Data) - Floating */}
+        <Header />
+        
+        <WelcomeModal />
+        <AuthModal />
 
       {/* Overlay leve para contraste (Flutuante) */}
       <div className="absolute inset-0 bg-black/15 pointer-events-none" />
@@ -40,6 +44,7 @@ function App() {
             <AudioManager />
             <BatteryManager />
             <DisplayManager />
+            <PackageManager />
           </div>
 
           {/* Bottom User Section */}
@@ -55,7 +60,8 @@ function App() {
       </main>
 
       <Toaster richColors position="top-right" closeButton />
-    </div>
+      </div>
+    </AuthProvider>
   )
 }
 
