@@ -1,26 +1,26 @@
-# Shell Integration & UX Refinement
+# Shell UX Refinement: Global Header Layout
 
-Este documento detalha a implementação do modo de interface nativa do Edenland Shell e as correções de compatibilidade com versões recentes do Hyprland.
+A interface da Edenland Shell foi refinada para um layout de "Top Bar" global, unificando todos os controles do sistema em uma única barra superior premium.
 
-## Objetivo
-Transformar o Shell de uma aplicação em janela para uma interface de sistema operacional (Desktop Environment) completa, eliminando decorações de janela e corrigindo erros de configuração.
+## Mudanças na Estrutura
 
-## Alterações Técnicas
+### 1. Header Global (Top Bar)
+- **Posicionamento**: Barra fixa no topo (`h-11`), largura total.
+- **Visual**: Glassmorphism (`bg-black/10`, `backdrop-blur-md`), borda inferior sutil.
+- **Layout**:
+  - **Esquerda**: `WorkspaceSwitcher` minimalista.
+  - **Centro**: `DateTimeManager` (Relógio e Data).
+  - **Direita**: Cápsula de indicadores de sistema (`Network`, `Audio`, `Battery`, `Display`, `User`).
 
-### 1. Hyprland Configuration (`hyprland.conf`)
-- **Sintaxe Unificada**: Substituição de `windowrulev2` por `windowrule` com prefixos `match:`.
-- **Modo Desktop**: Adição de regras para garantir que o processo `edenland` seja tratado como um painel flutuante sem bordas e em tela cheia.
-- **Otimização**: Desativação do `hyprpaper` para centralizar a gestão de wallpaper no Shell (React).
+### 2. Gerenciadores (Minimal Mode)
+- Todos os gerenciadores de hardware (`Network`, `Audio`, `Battery`, `Display`) e o `UserManager` ganharam um modo `variant="header"`.
+- Neste modo, eles ocupam menos espaço, usando ícones menores e removendo fundos pesados, permitindo uma integração limpa na barra superior.
+- Clicar nos ícones continua abrindo os modais/configurações completos.
 
-### 2. Tauri Configuration (`tauri.conf.json`)
-- **Decorações**: Desativadas para remover header e botões nativos.
-- **Modo**: Definido como `fullscreen` por padrão.
-- **Transparência**: Habilitada para permitir efeitos visuais entre o Shell e o compositor.
+### 3. Remoção do Dock Lateral
+- O dock lateral (aside) foi removido para liberar espaço horizontal, permitindo que o compositor (Hyprland) utilize todo o espaço abaixo do header para o tiling das janelas.
 
-### 3. Frontend (React/CSS)
-- **Transparência do Body**: Ajuste no `index.css` para permitir que o fundo da janela seja transparente se o wallpaper não estiver carregado ou se houver camadas inferiores.
-
-## Verificação
-- [ ] Ausência de barras vermelhas de erro no boot.
-- [ ] Shell ocupando 100% da tela sem barras de título.
-- [ ] Wallpaper renderizado corretamente via Shell.
+## Benefícios
+- **Consistência**: Alinha o Edenland com os padrões de design de shells modernas (GNOME, macOS).
+- **Espaço Útil**: Maximiza a área de trabalho para as aplicações.
+- **Foco**: Centraliza as informações vitais do sistema em um único local de fácil acesso.

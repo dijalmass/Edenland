@@ -13,6 +13,7 @@
 
   /* Destaque - Glória */
   --color-glory-gold: #D4AF37;  /* Acentos, cursores, bordas ativas e ícones */
+  --color-glory-gold-rgb: 212, 175, 55;
 
   /* Mapeamento Semântico */
   --color-background: var(--color-eden-dark);

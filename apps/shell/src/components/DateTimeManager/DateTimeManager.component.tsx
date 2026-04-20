@@ -94,9 +94,7 @@ export function DateTimeManager() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => setIsOpen(true)}
-          className={`p-3 rounded-2xl flex items-center justify-end gap-3 transition-all duration-300 pointer-events-auto
-            ${isOpen ? 'bg-primary/10' : 'bg-transparent'}
-          `}
+          className="p-3 rounded-2xl flex items-center justify-end gap-3 transition-all duration-300 pointer-events-auto hover:bg-white/5"
         >
           <div className="flex items-center gap-3 whitespace-nowrap">
             {settings.showDayName && (

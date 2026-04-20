@@ -20,6 +20,10 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 - **Bluetooth Manager**: Integração com `bluetoothctl` para permitir varredura e pareamento simplificado de dispositivos sem fio.
 
 ## [Unreleased]
+### Added
+- **Workspace Switcher**: Novo visualizador de áreas de trabalho no header com suporte a preview de janelas (hover) e criação dinâmica até o workspace 9.
+- **Header**: Implementação de uma barra superior fixa para unificar controles de sistema e workspaces.
+
 ### Fixed
 - **Audio Manager**: Removido botão incorreto de "Configurações de Rede" que aparecia no modal de áudio.
 - **ISO Builder**: Corrigido o nome do pacote `powerprofilesctl` para `power-profiles-daemon` na lista de pacotes.

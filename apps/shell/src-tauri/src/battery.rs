@@ -32,8 +32,6 @@ pub fn get_battery_status() -> Result<BatteryStatus, String> {
     let capacity_path = format!("{}/{}/capacity", power_supply_dir, dev);
     let status_path = format!("{}/{}/status", power_supply_dir, dev);
 
-    println!("Fetching battery status from {}...", dev);
-
     let percentage = fs::read_to_string(capacity_path)
         .map_err(|e| format!("Failed to read battery capacity: {}", e))?
         .trim()
@@ -44,8 +42,6 @@ pub fn get_battery_status() -> Result<BatteryStatus, String> {
         .map_err(|e| format!("Failed to read battery status: {}", e))?
         .trim()
         .to_string();
-
-    println!("Battery: {}% ({})", percentage, status);
 
     Ok(BatteryStatus { percentage, status })
 }

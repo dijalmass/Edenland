@@ -6,6 +6,10 @@ commands.allow = [
   "set_brightness",
   "get_monitors",
   "get_workspaces",
+  "get_active_workspace",
+  "get_workspace_clients",
+  "switch_workspace",
+  "focus_window",
   "apply_monitor_config",
   "set_workspace_monitor"
 ]

@@ -105,5 +105,8 @@
     "custom_color_description": "Escolha uma cor específica para o seu Éden.",
     "reset_tooltip": "Resetar para o padrão",
     "system_settings_subtitle": "Configurações do Sistema"
-  }
+  },
+  "workspace": "Workspace",
+  "active": "Ativo",
+  "workspace_empty": "Workspace Vazio"
 }

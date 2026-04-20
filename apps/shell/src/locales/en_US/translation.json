@@ -105,5 +105,8 @@
     "custom_color_description": "Choose a specific color for your Eden.",
     "reset_tooltip": "Reset to default",
     "system_settings_subtitle": "System Settings"
-  }
+  },
+  "workspace": "Workspace",
+  "active": "Active",
+  "workspace_empty": "Empty Workspace"
 }

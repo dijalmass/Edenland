@@ -16,7 +16,7 @@ import { ThemeSettings } from './ThemeSettings';
 import { MonitorSettings } from './MonitorSettings';
 import type { Monitor } from './DisplayManager.types';
 
-export function DisplayManager() {
+export function DisplayManager({ variant = 'dock' }: { variant?: 'dock' | 'header' }) {
   const { t } = useTranslation();
   const { 
     brightness, 
@@ -41,20 +41,22 @@ export function DisplayManager() {
 
   return (
     <>
-      <div className="relative w-full">
+      <div className={variant === 'header' ? 'relative' : 'relative w-full'}>
         <motion.button
           layout
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full p-3 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all duration-300 backdrop-blur-md border 
-            ${isOpen 
-              ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(var(--color-primary),0.15)]' 
-              : 'bg-muted/30 border-transparent hover:bg-muted/60'
+          className={`
+            flex items-center justify-center transition-all duration-300 pointer-events-auto
+            ${variant === 'header' 
+              ? 'p-2 rounded-lg hover:bg-white/10' 
+              : `w-full p-3 rounded-2xl backdrop-blur-md border transition-all duration-300
+                 ${isOpen ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(var(--color-primary),0.15)]' : 'bg-black/20 border-white/5 hover:bg-white/10'}`
             }
           `}
         >
-          <MonitorIcon className={`w-5 h-5 ${isOpen ? 'text-primary' : 'text-eden-light'}`} />
+          <MonitorIcon className={`${variant === 'header' ? 'w-4 h-4' : 'w-5 h-5'} ${isOpen ? 'text-primary' : 'text-eden-light'}`} />
         </motion.button>
       </div>
 

@@ -14,7 +14,7 @@ const passwordSchema = z.object({
 
 type PasswordForm = z.infer<typeof passwordSchema>;
 
-export function NetworkManager() {
+export function NetworkManager({ variant = 'dock' }: { variant?: 'dock' | 'header' }) {
   const { t } = useTranslation();
   const { 
     isOpen, wifiEnabled, networks, isLoading, error, 
@@ -54,23 +54,25 @@ export function NetworkManager() {
 
   return (
     <>
-      {/* Floating Icon */}
-      <div className="relative w-full">
+      <div className={variant === 'header' ? 'relative' : 'relative w-full'}>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={toggleOpen}
-          className={`w-full p-3 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 backdrop-blur-md border 
-            ${isOpen 
-              ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
-              : 'bg-muted/30 border-transparent hover:bg-muted/60'
+          className={`
+            flex items-center justify-center transition-all duration-300 pointer-events-auto
+            ${variant === 'header' 
+              ? 'p-2 rounded-lg hover:bg-white/10' 
+              : `w-full p-3 rounded-2xl backdrop-blur-md border transition-all duration-300 
+                 ${isOpen ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' : 'bg-black/20 border-white/5 hover:bg-white/10'}`
             }
+            ${variant === 'header' && isOpen ? 'text-primary' : ''}
           `}
         >
           {wifiEnabled ? (
-            <Wifi className={`w-5 h-5 ${isOpen ? 'text-primary' : 'text-foreground'}`} />
+            <Wifi className={`${variant === 'header' ? 'w-4 h-4' : 'w-5 h-5'} ${isOpen ? 'text-primary' : 'text-foreground'}`} />
           ) : (
-            <WifiOff className="w-5 h-5 text-muted-foreground" />
+            <WifiOff className={`${variant === 'header' ? 'w-4 h-4' : 'w-5 h-5'} text-muted-foreground`} />
           )}
         </motion.button>
       </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { useBatteryManager } from './BatteryManager.hook';
 
-export function BatteryManager() {
+export function BatteryManager({ variant = 'dock' }: { variant?: 'dock' | 'header' }) {
   const { t } = useTranslation();
   const { 
     status, 
@@ -56,26 +56,30 @@ export function BatteryManager() {
 
   return (
     <>
-      <div className="relative w-full">
+      <div className={variant === 'header' ? 'relative' : 'relative w-full'}>
         <motion.button
           layout
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full p-3 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all duration-300 backdrop-blur-md border 
-            ${isOpen 
-              ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
-              : 'bg-muted/30 border-transparent hover:bg-muted/60'
+          className={`
+            flex items-center justify-center transition-all duration-300 pointer-events-auto
+            ${variant === 'header' 
+              ? 'p-2 rounded-lg hover:bg-white/10 gap-1.5' 
+              : `w-full p-3 rounded-2xl flex-col backdrop-blur-md border transition-all duration-300
+                 ${isOpen ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' : 'bg-black/20 border-white/5 hover:bg-white/10'}`
             }
           `}
         >
-          {getBatteryIcon()}
+          {React.cloneElement(getBatteryIcon() as React.ReactElement, { 
+            className: `${variant === 'header' ? 'w-4 h-4' : 'w-5 h-5'} ${getBatteryIcon().props.className.includes('text-rose') ? 'text-rose-500' : (isOpen ? 'text-primary' : (getBatteryIcon().props.className.includes('text-amber') ? 'text-amber-500' : (getBatteryIcon().props.className.includes('text-emerald') ? 'text-emerald-500' : 'text-foreground')))}` 
+          })}
           <AnimatePresence>
             {showPercentage && status && (
               <motion.span 
-                initial={{ opacity: 0, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
                 className={`text-[10px] font-bold tracking-tighter leading-none ${isOpen ? 'text-primary' : 'text-foreground'}`}
               >
                 {status.percentage}%

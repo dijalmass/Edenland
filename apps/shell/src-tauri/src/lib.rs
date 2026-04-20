@@ -36,6 +36,10 @@ pub fn run() {
       display::set_brightness,
       display::get_monitors,
       display::get_workspaces,
+      display::get_active_workspace,
+      display::get_workspace_clients,
+      display::switch_workspace,
+      display::focus_window,
       display::apply_monitor_config,
       display::set_workspace_monitor
     ])

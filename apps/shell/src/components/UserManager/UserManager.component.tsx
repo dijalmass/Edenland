@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { useUserManager } from './UserManager.hook';
 
-export function UserManager() {
+export function UserManager({ variant = 'dock' }: { variant?: 'dock' | 'header' }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const {
@@ -37,16 +37,18 @@ export function UserManager() {
 
   return (
     <>
-      <div className="relative w-full">
+      <div className={variant === 'header' ? 'relative' : 'relative w-full'}>
         <motion.button
           layout
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full p-2 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all duration-300 backdrop-blur-md border 
-            ${isOpen 
-              ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
-              : 'bg-muted/30 border-transparent hover:bg-muted/60'
+          className={`
+            flex items-center justify-center transition-all duration-300 pointer-events-auto
+            ${variant === 'header' 
+              ? 'p-1 rounded-full hover:bg-white/10' 
+              : `w-full p-2 rounded-2xl flex-col backdrop-blur-md border transition-all duration-300
+                 ${isOpen ? 'bg-primary/20 border-primary/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' : 'bg-black/20 border-white/5 hover:bg-white/10'}`
             }
           `}
         >
@@ -54,12 +56,12 @@ export function UserManager() {
             <img 
               src={userInfo.avatar} 
               alt="User avatar" 
-              className="w-7 h-7 rounded-full object-cover border border-muted/50"
+              className={`${variant === 'header' ? 'w-6 h-6' : 'w-7 h-7'} rounded-full object-cover border border-muted/50`}
             />
           ) : (
-            <div className="w-7 h-7 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-              <span className="text-[10px] font-bold text-primary">
-                {userInfo ? getInitials(userInfo.name) : <User className="w-3.5 h-3.5" />}
+            <div className={`${variant === 'header' ? 'w-6 h-6' : 'w-7 h-7'} rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center`}>
+              <span className={`${variant === 'header' ? 'text-[8px]' : 'text-[10px]'} font-bold text-primary`}>
+                {userInfo ? getInitials(userInfo.name) : <User className={variant === 'header' ? 'w-3 h-3' : 'w-3.5 h-3.5'} />}
               </span>
             </div>
           )}

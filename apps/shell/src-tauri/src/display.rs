@@ -19,12 +19,31 @@ pub struct Monitor {
     pub available_modes: Vec<String>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Workspace {
     pub id: i32,
     pub name: String,
     pub monitor: String,
+    pub windows: i32,
+    pub lastwindowtitle: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Client {
+    pub address: String,
+    pub workspace: WorkspaceRef,
+    pub class: String,
+    pub title: String,
+    pub pid: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct WorkspaceRef {
+    pub id: i32,
+    pub name: String,
 }
 
 #[tauri::command]
@@ -95,6 +114,47 @@ pub fn get_workspaces() -> Result<Vec<Workspace>, String> {
 }
 
 #[tauri::command]
+pub fn get_active_workspace() -> Result<Workspace, String> {
+    let output = Command::new("hyprctl")
+        .args(["activeworkspace", "-j"])
+        .output()
+        .map_err(|e| e.to_string())?;
+    
+    let workspace: Workspace = serde_json::from_slice(&output.stdout)
+        .map_err(|e| e.to_string())?;
+    
+    Ok(workspace)
+}
+
+#[tauri::command]
+pub fn get_workspace_clients(workspace_id: i32) -> Result<Vec<Client>, String> {
+    let output = Command::new("hyprctl")
+        .args(["clients", "-j"])
+        .output()
+        .map_err(|e| e.to_string())?;
+    
+    let all_clients: Vec<Client> = serde_json::from_slice(&output.stdout)
+        .map_err(|e| e.to_string())?;
+    
+    let filtered: Vec<Client> = all_clients
+        .into_iter()
+        .filter(|c| c.workspace.id == workspace_id)
+        .collect();
+    
+    Ok(filtered)
+}
+
+#[tauri::command]
+pub fn switch_workspace(id: i32) -> Result<(), String> {
+    Command::new("hyprctl")
+        .args(["dispatch", "workspace", &id.to_string()])
+        .output()
+        .map_err(|e| e.to_string())?;
+    
+    Ok(())
+}
+
+#[tauri::command]
 pub fn apply_monitor_config(name: String, res: String, pos: String, scale: String) -> Result<(), String> {
     let config = format!("{},{},{},{}", name, res, pos, scale);
     
@@ -110,6 +170,15 @@ pub fn apply_monitor_config(name: String, res: String, pos: String, scale: Strin
 pub fn set_workspace_monitor(workspace_id: i32, monitor_name: String) -> Result<(), String> {
     Command::new("hyprctl")
         .args(["keyword", "workspace", &format!("{},monitor:{}", workspace_id, monitor_name)])
+        .output()
+        .map_err(|e| e.to_string())?;
+    
+    Ok(())
+}
+#[tauri::command]
+pub fn focus_window(address: String) -> Result<(), String> {
+    Command::new("hyprctl")
+        .args(["dispatch", "focuswindow", &format!("address:{}", address)])
         .output()
         .map_err(|e| e.to_string())?;
     
