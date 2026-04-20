@@ -11,7 +11,8 @@ export const WorkspaceSwitcher: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [previewClients, setPreviewClients] = useState<Client[]>([]);
   const [isPreviewLoading, setIsPreviewLoading] = useState(false);
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const enterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const leaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Determine which workspaces to show
   const maxExistingId = workspaces.length > 0 ? Math.max(...workspaces.map(w => w.id)) : 1;
@@ -31,20 +32,28 @@ export const WorkspaceSwitcher: React.FC = () => {
   }
 
   const handleMouseEnter = (id: number) => {
-    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
+    if (enterTimeoutRef.current) clearTimeout(enterTimeoutRef.current);
     
-    hoverTimeoutRef.current = setTimeout(async () => {
+    enterTimeoutRef.current = setTimeout(async () => {
       setHoveredId(id);
       setIsPreviewLoading(true);
       const clients = await getWorkspaceClients(id);
       setPreviewClients(clients);
       setIsPreviewLoading(false);
-    }, 400); // 400ms delay as requested
+    }, 400); 
   };
 
   const handleMouseLeave = () => {
-    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-    setHoveredId(null);
+    if (enterTimeoutRef.current) clearTimeout(enterTimeoutRef.current);
+    
+    leaveTimeoutRef.current = setTimeout(() => {
+      setHoveredId(null);
+    }, 300); // 300ms bridge delay
+  };
+
+  const handlePopoverEnter = () => {
+    if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
   };
 
   return (
@@ -80,7 +89,9 @@ export const WorkspaceSwitcher: React.FC = () => {
                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="absolute top-full left-0 -translate-x-4 mt-3 w-64 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl z-[60]"
+                onMouseEnter={handlePopoverEnter}
+                onMouseLeave={handleMouseLeave}
+                className="absolute top-full left-0 -translate-x-4 mt-3 w-64 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl z-[60] pointer-events-auto"
               >
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center justify-between border-b border-white/10 pb-2">
@@ -103,17 +114,24 @@ export const WorkspaceSwitcher: React.FC = () => {
                       previewClients.map((client) => (
                         <motion.button 
                           key={client.address}
-                          whileHover={{ x: 4, backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
+                          whileHover="hover"
                           whileTap={{ scale: 0.98 }}
                           onClick={() => focusWindow(client.address)}
-                          className="w-full flex flex-col gap-1 group text-left p-2 pr-6 rounded-xl transition-all border border-transparent hover:border-white/5"
+                          className="w-full flex flex-col gap-1 group text-left p-2 pr-6 rounded-xl transition-all border border-transparent hover:bg-white/5 hover:border-white/5"
                         >
-                          <span className="text-xs text-white/90 font-bold truncate group-hover:text-primary transition-colors">
-                            {client.title || client.class}
-                          </span>
-                          <span className="text-[10px] text-white/40 truncate">
-                            {client.class}
-                          </span>
+                          <motion.div 
+                            variants={{
+                              hover: { x: 4 }
+                            }}
+                            className="flex flex-col gap-1"
+                          >
+                            <span className="text-xs text-white/90 font-bold truncate group-hover:text-primary transition-colors">
+                              {client.title || client.class}
+                            </span>
+                            <span className="text-[10px] text-white/40 truncate">
+                              {client.class}
+                            </span>
+                          </motion.div>
                         </motion.button>
                       ))
                     ) : (
